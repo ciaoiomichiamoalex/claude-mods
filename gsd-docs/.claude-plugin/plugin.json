@@ -1,0 +1,7 @@
+{
+  "name": "gsd-docs",
+  "version": "1.0.0",
+  "description": "Documentazione di progetto in stile GSD: /gsd-docs:map-codebase (7 documenti di analisi) e /gsd-docs:docs-update (README e docs/ scritti e verificati sul codice), con gli agenti codebase-mapper, doc-writer e doc-verifier",
+  "author": { "name": "Alex Occelli" },
+  "license": "MIT"
+}
