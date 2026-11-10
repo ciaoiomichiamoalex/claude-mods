@@ -1,0 +1,7 @@
+{
+  "name": "barra-stato",
+  "version": "1.2.0",
+  "description": "Riga sotto l'input: modello, effort, contesto, limiti 5 ore e 7 giorni, scadenza cache, job al lavoro (agenti, shell, monitor)",
+  "types": "./types/index.d.ts",
+  "author": { "name": "Alex Occelli" }
+}
