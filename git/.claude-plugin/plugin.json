@@ -1,0 +1,6 @@
+{
+  "name": "git",
+  "version": "1.0.0",
+  "description": "/commit: raggruppa i file modificati per lavoro, un commit Conventional Commits (commitizen) per gruppo, push se c'è un remoto, riepilogo dei commit",
+  "author": { "name": "Alex Occelli" }
+}
