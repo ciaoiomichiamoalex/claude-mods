@@ -725,7 +725,7 @@ export function registerCleanView(on: On): void {
     const engine = await next(e)
 
     const width = Math.max(30, e.props.bodyColumns)
-    const inner = width - 4
+    const inner = width - 2
     const nameWidth = Math.max(6, Math.min(42, inner - 2 - 2 - meterWidth(inner) - 2 - 8))
     const elapsed = formatDuration((list.finishedAt ?? now) - (list.startedAt ?? now))
     const isPaused = list.phase === 'needs-you'
@@ -787,8 +787,8 @@ export function registerCleanView(on: On): void {
     // se la lista intera non entra in maxRows, solo le righe che contano, invece di una lista tagliata e "n more"
     const draw = (full: (typeof header)[], short: (typeof header)[]) => (
       <Box flexDirection="column">
-        {/* margine di 2 colonne, come il testo delle risposte di Claude Code */}
-        <Box paddingX={2} flexDirection="column" width={width}>
+        {/* margine sinistro di 2 colonne, come il testo delle risposte di Claude Code; a destra basta lo spazio del [-] */}
+        <Box paddingLeft={2} flexDirection="column" width={width}>
           {full.length <= e.props.maxRows ? full : short.slice(0, Math.max(1, e.props.maxRows))}
         </Box>
         {engine}
