@@ -372,7 +372,6 @@ export function turnEnded(live: CleanViewChecklist, end: TurnEnd, now: number): 
 // ------------------------------------------------------------------- drawing
 
 export const COLORS = {
-  frame: '#d6457f',
   accent: '#e0457b',
   done: '#2f8f4e',
   doneText: '#5fbf7a',
@@ -726,7 +725,7 @@ export function registerCleanView(on: On): void {
     const engine = await next(e)
 
     const width = Math.max(30, e.props.bodyColumns)
-    const inner = width - 4
+    const inner = width
     const nameWidth = Math.max(6, Math.min(42, inner - 2 - 2 - meterWidth(inner) - 2 - 8))
     const elapsed = formatDuration((list.finishedAt ?? now) - (list.startedAt ?? now))
     const isPaused = list.phase === 'needs-you'
@@ -785,18 +784,12 @@ export function registerCleanView(on: On): void {
     )
 
     // in fullscreen lo slot in basso è al massimo metà terminale, e la lista degli agenti sotto il prompt lo riempie:
-    // se la cornice non entra in maxRows, niente cornice e solo le righe che contano, invece di un bordo tagliato e "n more"
+    // se la lista intera non entra in maxRows, solo le righe che contano, invece di una lista tagliata e "n more"
     const draw = (full: (typeof header)[], short: (typeof header)[]) => (
       <Box flexDirection="column">
-        {full.length + 2 <= e.props.maxRows ? (
-          <Box borderStyle="round" borderColor={COLORS.frame} paddingX={1} flexDirection="column" width={width}>
-            {full}
-          </Box>
-        ) : (
-          <Box paddingX={2} flexDirection="column" width={width}>
-            {short.slice(0, Math.max(1, e.props.maxRows))}
-          </Box>
-        )}
+        <Box flexDirection="column" width={width}>
+          {full.length <= e.props.maxRows ? full : short.slice(0, Math.max(1, e.props.maxRows))}
+        </Box>
         {engine}
       </Box>
     )
