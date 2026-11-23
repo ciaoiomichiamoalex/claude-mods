@@ -785,17 +785,18 @@ export function registerCleanView(on: On): void {
 
     // in fullscreen lo slot in basso è al massimo metà terminale, e la lista degli agenti sotto il prompt lo riempie:
     // se la lista intera non entra in maxRows, solo le righe che contano, invece di una lista tagliata e "n more"
-    const draw = (full: (typeof header)[], short: (typeof header)[]) => (
+    const draw = (full: (typeof header)[], short: (typeof header)[], marginLeft = 2) => (
       <Box flexDirection="column">
         {/* margine sinistro di 2 colonne, come il testo delle risposte di Claude Code; a destra basta lo spazio del [-] */}
-        <Box paddingLeft={2} flexDirection="column" width={width}>
+        <Box paddingLeft={marginLeft} flexDirection="column" width={width}>
           {full.length <= e.props.maxRows ? full : short.slice(0, Math.max(1, e.props.maxRows))}
         </Box>
         {engine}
       </Box>
     )
 
-    if (list.phase === 'done' && list.isCollapsed) return draw([header], [header])
+    // la riga finale "✓ All done" va senza margine, così la spunta sta sotto il simbolo della riga sopra
+    if (list.phase === 'done' && list.isCollapsed) return draw([header], [header], 0)
 
     const total = list.tasks.length
     const active = list.tasks.findIndex(t => t.status === 'active')
