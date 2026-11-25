@@ -13,11 +13,6 @@
       "description": "Riga sotto l'input: modello, effort, contesto, limiti 5 ore e 7 giorni, scadenza cache, job al lavoro (agenti, shell, monitor)"
     },
     {
-      "name": "gsd-docs",
-      "source": "./gsd-docs",
-      "description": "Documentazione di progetto in stile GSD: map-codebase e docs-update, con gli agenti codebase-mapper, doc-writer e doc-verifier"
-    },
-    {
       "name": "git",
       "source": "./git",
       "description": "/commit: raggruppa i file modificati per lavoro, un commit Conventional Commits (commitizen) per gruppo, push se c'è un remoto, riepilogo dei commit"
